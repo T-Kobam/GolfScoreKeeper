@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
 
+- Recursionの課題で作成。
+- ゴルフコース名、プレイヤー、ホール数を選択してスコア表を作成することができます。
+  
+URL: https://t-kobam.github.io/GolfScoreKeeper/
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
