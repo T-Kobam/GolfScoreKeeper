@@ -1,0 +1,57 @@
+.main {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.input-div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.input {
+    padding-left: 1em;
+}
+
+.table-div {
+    padding-top: 2em;
+}
+
+label {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 1000px;
+}
+
+td, th { 
+    border: 2px #808080 solid; 
+}
+
+.c-table--hole {
+    width: 2em;
+}
+
+.c-table--input {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.c-table--td {
+    padding: 0.5em;
+    width: 160px;
+}
+
+.table-td--red {
+    background-color: pink;
+}
+
+.table-td--green {
+    background-color: greenyellow;
+}

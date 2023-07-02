@@ -1,0 +1,70 @@
+<h1>{{headerTitle}}</h1>
+<div class="main">
+    <div class="input-div">
+        <div class="input">
+            <label for="golfcourse">Course Name:</label>
+            <input id="golfcourse" type="text" (keydown.enter)="onKeyDownForGolfCourse($event)" placeholder="Golf Course">
+        </div>
+        <div class="input">
+            <label for="playername">Player Name:</label>
+            <input id="playername" type="text" (keydown.enter)="onKeyDownForPlayerName($event)" placeholder="John Tiger">
+        </div>
+        <div class="input">
+            <label for="holes">Number of Holes:</label>
+            <select name="holes" id="holes" (change)="onChangeForHoles($event)">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </select>
+        </div>
+        <div class="input">
+            <button *ngIf="isRetryParForHole" (click)="onClickParForHole($event)">再入力</button>
+        </div>
+    </div>
+    
+    <div class="table-div">
+        <table *ngIf="holes.length != 0">
+            <tr>
+                <td class="c-table--td">Hole Number</td>
+                <td class="c-table--hole" *ngFor="let hole of holes">{{hole.getNo()}}</td>
+                <td class="c-table--td">Total</td>
+                <td class="c-table--td">Under/Over Par</td>
+            </tr>
+            <tr>
+                <td class="c-table--td">Par For Hole</td>
+                <td *ngFor="let hole of holes; index as i">
+                    <input *ngIf="!isPtagParForHole[i]" class="c-table--input" type="text" (keydown.enter)="onKeyDownForParForHole($event)" name="{{hole.getNo()}}" value="{{hole.getPar()}}">
+                    <p *ngIf="isPtagParForHole[i]">{{hole.getPar()}}</p>
+                </td>
+                <td class="c-table--td">{{totalParForHole}}</td>
+                <td class="c-table--td">0</td>
+            </tr>
+            <tr>
+                <td class="c-table--td"></td>
+                <td *ngFor="let hole of holes"></td>
+                <td class="c-table--td"></td>
+                <td class="c-table--td"></td>
+            </tr>
+            <tr *ngFor="let player of players">
+                <td class="c-table--td">{{player.getName()}}</td>
+                <td *ngFor="let score of player.getScores(); index as i" (keydown.enter)="onKeyDownForScore($event)" id="{{player.getNo()}}" [class.table-td--red]="player.getResult(i) > 0" [class.table-td--green]="player.getResult(i) < 0">
+                    <input *ngIf="!isPtagScore[i]" class="c-table--input" type="text" name="{{i + 1}}" value="{{score}}">
+                    <p *ngIf="isPtagScore[i]">{{player.getScore(i)}}</p>
+                </td>
+                <td class="c-table--td">{{player.getTotal()}}</td>
+                <td class="c-table--td" [class.table-td--red]="player.getTotalResult() > 0" [class.table-td--green]="player.getTotalResult() < 0">{{player.getTotalResult()}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="input-div" *ngIf="isRetryScore">
+        <p>お疲れ様でした！</p>
+        <button (click)="onClickReset($event)">スコア表をリセットする</button>
+    </div>
+</div>
