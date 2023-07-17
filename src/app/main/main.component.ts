@@ -179,5 +179,6 @@ export class MainComponent {
     this.isRetryScore = false;
     this.result = [];
     this.totalResult = 0;
+    PlayerService.reset();
   }
 }

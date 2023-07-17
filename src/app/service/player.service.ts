@@ -102,4 +102,8 @@ export class PlayerService {
     this.totalResult += Number(result);
     this.result[holeNumber] = result;
   }
+
+  static reset = (): void => {
+    PlayerService.totalNumber = 1;
+  }
 }
